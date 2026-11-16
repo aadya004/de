@@ -211,81 +211,153 @@ button:focus-visible { outline:2px solid #e2c783; outline-offset:4px; }
 }
 
 @media (max-width: 640px) {
-  .invitation-shell { padding:20px 22px 18px; min-height:100svh; }
-  .invitation-shell::before { inset:8px; }
-  .topbar { align-items: flex-start; }
-  .top-date { font-size:7px; letter-spacing:.1em; padding-top:6px; }
-  .top-date span { padding:0 3px; }
-  .brand-seal { width:29px; height:29px; }
-  .brand-lockup { gap:7px; }
-  .brand-lockup strong { font-size:14px; }
-  .brand-lockup small { font-size:6px; }
-  .stage { width:100%; padding:0; }
-  .book { width:min(82vw, 370px, calc((100svh - 245px) * var(--page-ratio))); aspect-ratio:var(--page-ratio); }
+  .invitation-shell {
+    width: 100%;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    gap: 0;
+  }
+  .invitation-shell::before { inset: 7px; }
+  .topbar { flex: 0 0 auto; align-items: center; gap: 8px; }
+  .brand-lockup { min-width: 0; gap: 7px; }
+  .brand-seal { width: 30px; height: 30px; font-size: 18px; }
+  .brand-lockup strong { font-size: 14px; }
+  .brand-lockup small { font-size: 6px; letter-spacing: .12em; }
+  .top-date { flex: 0 1 auto; font-size: clamp(7px, 2vw, 9px); letter-spacing: .08em; padding-top: 0; text-align: right; }
+  .top-date span { padding: 0 3px; }
+  .stage { flex: 1 1 auto; width: 100%; min-height: 0; padding: 8px 0 12px; }
+  .book { width: min(100%, 350px, calc((100dvh - 160px) * var(--page-ratio))); aspect-ratio: var(--page-ratio); }
   .book-closed { transform: none; }
   .book-spread { grid-template-columns: 1fr; }
-  .book-spread > .left-page, .book-spread > .page-blank { display:none; }
-  .book-spread > .right-page { grid-column:1; border-radius:7px; box-shadow:inset 0 0 12px rgba(55,37,17,.1); }
-  .flip-sheet { width:100%; right:0; border-radius:7px; }
-  .page-leaf.next { transform-origin:left center; }
-  .page-leaf.prev { left:0; right:auto; transform-origin:right center; }
-  .page-advance { width:100%; }
-  .book-pages-edge { right:-4px; width:8px; }
-  .book-shadow { bottom:-7px; }
-  .cover-content,.back-content { padding:18px 8%; }
-  .crest { width:42px; margin-bottom:6px; }
-  .crest b { font-size:15px; }
-  .school-name { font-size:7px; letter-spacing:.15em; }
-  .location { font-size:10px; }
-  .ornament { margin:6px auto; width:85px; }
-  .cover-title { font-size:clamp(35px, 10vw, 49px); }
-  .cover-subtitle { font-size:11px; }
-  .cover-note { font-size:10px; }
-  .tap-hint { bottom:auto; padding-top:8px; font-size:6px; }
-  .paper-content { padding:7% 8%; gap:clamp(3px, .9%, 6px); }
-  .paper-content::before { inset:8px; }
-  .eyebrow { font-size:6px; letter-spacing:.15em; }
-  .serif-line { font-size:clamp(10px, 3vw, 13px); line-height:1.38; margin:3px 0; }
-  .school-title { font-size:clamp(23px, 7vw, 31px); letter-spacing:.04em; }
-  .fine-rule { margin:5px auto; }
-  .event-name { font-size:clamp(16px, 4.6vw, 21px); }
-  .tagline { font-size:10px; }
-  .portrait-frame { width:min(78%, 260px); height:min(46%, 240px); padding:5px; }
-  .portrait-caption { font-size:clamp(15px, 4.2vw, 20px); }
-  .details-content { padding-left:10%; padding-right:10%; }
-  .details-heading { font-size:clamp(23px, 6.5vw, 30px); margin-bottom:6px; }
-  .detail-card { gap:10px; min-height:58px; padding:7px 9px; }
-  .detail-icon { width:32px; font-size:19px; }
-  .detail-icon.clock { font-size:27px; }
-  .detail-value { font-size:clamp(16px, 4.7vw, 20px); }
-  .principal-inner { width:82%; padding:16px 0; }
-  .principal-name { font-size:clamp(22px, 6.2vw, 31px); }
-  .presence { font-size:clamp(13px, 3.8vw, 17px); margin:6px 0 10px; }
-  .contact-box { padding:8px 18px; }
-  .contact-number { font-size:18px; }
-  .back-content h2 { font-size:clamp(36px, 10vw, 48px); }
-  .back-tagline { font-size:12px; }
-  .back-quote { font-size:10px; }
-  .controls { grid-template-columns:auto 1fr auto; gap:8px; }
-  .page-count { gap:5px; font-size:8px; }
-  .page-count i { width:14px; }
-  .nav-controls { gap:8px; }
-  .nav-controls button { width:34px; height:34px; }
-  .turn-hint { font-size:6px; letter-spacing:.12em; }
-  .utility-controls { gap:6px; }
-  .utility-controls button { width:31px; height:31px; }
-  .keyboard-hint { font-size:6px; margin-top:9px; }
+  .book-spread > .left-page, .book-spread > .page-blank { display: none; }
+  .book-spread > .right-page { grid-column: 1; border-radius: 7px; box-shadow: inset 0 0 12px rgba(55,37,17,.1); }
+  .flip-sheet { width: 100%; right: 0; border-radius: 7px; }
+  .single-page.book-open:not(.is-turning) .cover-leaf { opacity: 0; pointer-events: none; }
+  .single-page.book-open.is-turning.prev .cover-leaf { opacity: 1; }
+  .page-leaf.next { transform-origin: left center; }
+  .page-leaf.prev { left: 0; right: auto; transform-origin: right center; }
+  .page-advance { width: 100%; }
+  .book-pages-edge { right: -4px; width: 8px; }
+  .book-shadow { bottom: -7px; }
+  .cover-content, .back-content { padding: 20px 7%; }
+  .cover-content { gap: clamp(3px, 1.2vh, 9px); }
+  .cover-content .ornament { width: min(112px, 52%); margin: clamp(3px, .7vh, 6px) auto; }
+  .crest { width: clamp(48px, 15vw, 58px); margin-bottom: 2px; }
+  .crest b { font-size: 17px; }
+  .crest span { font-size: 11px; }
+  .crest small { font-size: 7px; }
+  .school-name { font-size: clamp(9px, 2.7vw, 11px); letter-spacing: .12em; }
+  .location { font-size: clamp(11px, 3.1vw, 13px); }
+  .cover-content .eyebrow { font-size: clamp(9px, 2.5vw, 11px); letter-spacing: .14em; }
+  .cover-content .cover-title { font-size: clamp(36px, 11vw, 50px); }
+  .cover-subtitle { font-size: clamp(12px, 3.5vw, 15px); }
+  .cover-note { font-size: clamp(11px, 3.2vw, 13px); line-height: 1.4; }
+  .tap-hint { margin-top: clamp(7px, 1.6vh, 13px); padding-top: 0; font-size: clamp(7px, 2vw, 9px); letter-spacing: .14em; }
+  .tap-hint svg { width: 13px; }
+  .paper-content { padding: 7% 8%; gap: clamp(3px, .9%, 6px); }
+  .paper-content::before { inset: 8px; }
+  .eyebrow { font-size: 7px; letter-spacing: .15em; }
+  .serif-line { font-size: clamp(10px, 3vw, 13px); line-height: 1.38; margin: 3px 0; }
+  .school-title { font-size: clamp(23px, 7vw, 31px); letter-spacing: .04em; }
+  .fine-rule { margin: 5px auto; }
+  .event-name { font-size: clamp(16px, 4.6vw, 21px); }
+  .tagline { font-size: 10px; }
+  .portrait-frame { width: min(78%, 260px); height: min(46%, 240px); padding: 5px; }
+  .portrait-caption { font-size: clamp(15px, 4.2vw, 20px); }
+  .details-content { padding-left: 10%; padding-right: 10%; }
+  .details-heading { font-size: clamp(23px, 6.5vw, 30px); margin-bottom: 6px; }
+  .detail-card { gap: 10px; min-height: 58px; padding: 7px 9px; }
+  .detail-icon { width: 32px; font-size: 19px; }
+  .detail-icon.clock { font-size: 27px; }
+  .detail-value { font-size: clamp(16px, 4.7vw, 20px); }
+  .principal-inner { width: 82%; padding: 16px 0; }
+  .principal-name { font-size: clamp(22px, 6.2vw, 31px); }
+  .presence { font-size: clamp(13px, 3.8vw, 17px); margin: 6px 0 10px; }
+  .contact-box { padding: 8px 18px; }
+  .contact-number { font-size: 18px; }
+  .back-content h2 { font-size: clamp(36px, 10vw, 48px); }
+  .back-tagline { font-size: 12px; }
+  .back-quote { font-size: 10px; }
+  .controls { flex: 0 0 auto; width: 100%; grid-template-columns: 1fr auto 1fr; gap: 8px; }
+  .page-count { gap: 5px; font-size: 9px; white-space: nowrap; }
+  .page-count i { width: 14px; }
+  .nav-controls { gap: 8px; }
+  .nav-controls button, .utility-controls button { width: 44px; height: 44px; }
+  .turn-hint { display: none; }
+  .utility-controls { gap: 4px; }
+  .keyboard-hint { display: none; }
+}
+
+@media (max-width: 360px) {
+  .invitation-shell { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+  .brand-lockup small { max-width: 94px; font-size: 5px; }
+  .top-date { font-size: 7px; letter-spacing: .04em; }
+  .top-date span { padding: 0 2px; }
+  .controls { gap: 4px; }
+  .nav-controls { gap: 6px; }
+  .nav-controls button, .utility-controls button { width: 44px; height: 44px; }
+  .utility-controls { gap: 2px; }
+  .cover-content { padding-left: 6%; padding-right: 6%; }
 }
 
 @media (max-height: 560px) and (max-width: 640px) {
-  .invitation-shell { padding-top:12px; padding-bottom:12px; }
-  .book { width:min(42vw, calc((100svh - 180px) * var(--page-ratio))); }
-  .topbar { min-height:28px; }
-  .controls { min-height:34px; }
-  .keyboard-hint { margin-top:4px; }
-  .paper-content { gap:2px; padding-top:4%; padding-bottom:4%; }
-  .portrait-frame { height:40%; }
-  .principal-inner { padding:8px 0; }
+  .invitation-shell { padding-top: max(8px, env(safe-area-inset-top)); padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+  .topbar { display: none; }
+  .stage { padding: 4px 0 8px; }
+  .book { width: min(100%, 320px, calc((100dvh - 96px) * var(--page-ratio))); }
+  .cover-content, .back-content { padding-top: 12px; padding-bottom: 12px; }
+  .cover-content { gap: 2px; }
+  .cover-content .ornament { margin: 2px auto; }
+  .crest { width: 40px; }
+  .school-name { font-size: 8px; }
+  .location { font-size: 10px; }
+  .cover-content .eyebrow { font-size: 7px; }
+  .cover-content .cover-title { font-size: clamp(30px, 8vw, 38px); }
+  .cover-subtitle { font-size: 10px; }
+  .cover-note { font-size: 9px; }
+  .tap-hint { margin-top: 5px; font-size: 7px; }
+  .controls { grid-template-columns: 1fr auto 1fr; }
+  .book-page { container-type: inline-size; }
+  .cover-content { padding: 10px 6%; gap: 1px; }
+  .cover-content .ornament { width: 58px; margin: 1px auto; }
+  .crest { width: clamp(32px, 21cqw, 40px); }
+  .school-name { font-size: 7px; letter-spacing: .08em; }
+  .cover-content .location { font-size: 9px; }
+  .cover-content .cover-title { font-size: clamp(22px, 15cqw, 34px); }
+  .cover-subtitle { font-size: 9px; }
+  .cover-note { font-size: 8px; line-height: 1.2; }
+  .tap-hint { margin-top: 3px; font-size: 6px; }
+  .paper-content { gap: 1px; padding: 4% 7%; }
+  .invitation-content .ornament, .portrait-content .ornament { width: 54px; margin: 1px auto; }
+  .invitation-content .serif-line { font-size: clamp(8px, 5.2cqw, 10px); line-height: 1.2; margin: 1px 0; }
+  .invitation-content .school-title { font-size: clamp(14px, 9cqw, 19px); line-height: 1; letter-spacing: .02em; }
+  .invitation-content .location { font-size: 8px; }
+  .invitation-content .fine-rule { margin: 2px auto; }
+  .invitation-content .event-name { font-size: clamp(11px, 7cqw, 15px); line-height: 1.05; white-space: normal; }
+  .invitation-content .tagline { font-size: 8px; }
+  .portrait-frame { height: 40%; }
+  .portrait-caption { font-size: clamp(11px, 7cqw, 15px); }
+  .details-heading { font-size: clamp(16px, 11cqw, 23px); margin-bottom: 3px; }
+  .detail-card { gap: 4px; min-height: 42px; padding: 4px 5px; }
+  .detail-icon { width: 24px; font-size: 16px; }
+  .detail-icon.clock { font-size: 20px; }
+  .detail-card .eyebrow { font-size: 6px; }
+  .detail-value { font-size: clamp(10px, 6.8cqw, 14px); white-space: normal; }
+  .principal-inner { width: 90%; padding: 4px 0; }
+  .principal-inner .ornament { margin: 2px auto; }
+  .principal-name { font-size: clamp(16px, 10cqw, 22px); white-space: normal; }
+  .principal-role { font-size: 10px; }
+  .presence { font-size: 9px; line-height: 1.25; margin: 4px 0; }
+  .contact-box { gap: 3px; margin-bottom: 4px; padding: 5px 8px; }
+  .contact-label { font-size: 6px; }
+  .contact-number { font-size: clamp(12px, 7cqw, 16px); }
+  .back-content { padding: 8px 6%; }
+  .back-mark { font-size: 14px; }
+  .back-content h2 { font-size: clamp(22px, 14cqw, 30px); }
+  .back-tagline { font-size: 9px; }
+  .back-quote { font-size: 8px; line-height: 1.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
